@@ -1,0 +1,34 @@
+package com.crazyvaperV2.service;
+
+import com.crazyvaperV2.dao.ModDao;
+import com.crazyvaperV2.entity.Mod;
+import com.crazyvaperV2.service.interfaces.ModService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class ModServiceImpl implements ModService {
+
+    @Autowired
+    private ModDao modDao;
+
+    @Override
+    public void save(Mod emtity) {
+        modDao.save(emtity);
+    }
+
+    @Override
+    public Mod getById(long id) {
+        return modDao.findById(id);
+    }
+
+    @Override
+    public List<Mod> getAll() {
+        return modDao.findAll();
+    }
+
+    @Override
+    public void delete(long id) {
+        modDao.delete(id);
+    }
+}
