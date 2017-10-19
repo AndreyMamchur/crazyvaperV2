@@ -4,9 +4,11 @@ import com.crazyvaperV2.dao.ModDao;
 import com.crazyvaperV2.entity.Mod;
 import com.crazyvaperV2.service.interfaces.ModService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ModServiceImpl implements ModService {
 
     @Autowired

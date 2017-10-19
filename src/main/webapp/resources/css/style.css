@@ -1,0 +1,33 @@
+legend{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+#goodsBlock {
+    vertical-align: top;
+    width: 150px; /* Ширина */
+    margin: 0 10px 10px 0; /* Отступы */
+    padding: 10px 0; /* Поля сверху и снизу */
+    text-align: center; /* Выравнивание по центру */
+    display: inline-block; /* Строчно-блочный элемент */
+}
+#goodsBlock img {
+    border: 2px solid rgba(12,12,12,0.95); /* Параметры рамки */
+}
+#goodsBlock p {
+    margin: 0; /* Отступы */
+}
+
+#nameOfColumns{
+    background-color: darksalmon;
+}
+
+#loginAndRegistration{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

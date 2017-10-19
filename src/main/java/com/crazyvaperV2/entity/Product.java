@@ -24,7 +24,7 @@ public abstract class Product {
     private String image;
 
     @Column(name = "product_description", length = 600)
-    private String productDescription;
+    private String productDescription = "";
 
     @Column(nullable = false)
     private double price;

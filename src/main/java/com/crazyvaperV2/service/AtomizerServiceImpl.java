@@ -4,9 +4,11 @@ import com.crazyvaperV2.dao.AtomizerDao;
 import com.crazyvaperV2.entity.Atomizer;
 import com.crazyvaperV2.service.interfaces.AtomizerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AtomizerServiceImpl implements AtomizerService {
 
     @Autowired

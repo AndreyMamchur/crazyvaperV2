@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class ECig extends Product {
 
     @Column(name = "color")
-    private String color;
+    private String color ="";
 
     public String getColor() {
         return color;

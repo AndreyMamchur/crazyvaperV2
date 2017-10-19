@@ -4,9 +4,11 @@ import com.crazyvaperV2.dao.ELiquidDao;
 import com.crazyvaperV2.entity.ELiquid;
 import com.crazyvaperV2.service.interfaces.ELiquidService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ELiquidServiceImpl implements ELiquidService {
 
     @Autowired
