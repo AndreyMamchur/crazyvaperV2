@@ -4,6 +4,7 @@ import com.crazyvaperV2.dao.AtomizerDao;
 import com.crazyvaperV2.entity.Atomizer;
 import com.crazyvaperV2.service.interfaces.AtomizerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +34,10 @@ public class AtomizerServiceImpl implements AtomizerService {
     @Override
     public void delete(long id) {
         atomizerDao.delete(id);
+    }
+
+    @Override
+    public Page<Atomizer> getAll(Integer page, Integer size, String order, String direction) {
+        return null;
     }
 }

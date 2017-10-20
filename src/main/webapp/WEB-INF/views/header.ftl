@@ -15,10 +15,9 @@
         </div>
         <ul class="nav navbar-nav navbar-left">
             <li class=""><a href="/ecig/all?page=0&size=10">E-CIGS</a></li>
-            <li class=""><a href="/">E-LIQUID</a></li>
+            <li class=""><a href="/eliquid/all?page=0&size=10">E-LIQUID</a></li>
             <li class=""><a href="/">MODS</a></li>
             <li class=""><a href="/">ATOMIZERS</a></li>
-            <li class=""><a href="/">VAPE ACCESSORIES</a></li>
             <li class=""><a href="/">BRANDS</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

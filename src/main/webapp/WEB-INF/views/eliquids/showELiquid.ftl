@@ -2,43 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ECIGData</title>
+    <title>ELiquidData</title>
 </head>
 <body class="container">
 <#include "*/headerAdmin.ftl">
 <#include "*/header.ftl">
 <div class="table-responsive">
-    <caption>ECIG info</caption><br>
-    <img width="40%" height="40%" src="/resources/image/${eCig.image}">
+    <caption>ELIQUID INFO</caption><br>
+    <img width="40%" height="40%" src="/resources/image/${eLiquid.image}">
     <table class="table table-striped">
 
         <tr>
             <td>Name</td>
-            <td>${eCig.name}</td>
+            <td>${eLiquid.name}</td>
         </tr>
         <tr>
-            <td>Color</td>
-            <td>${eCig.color}</td>
+            <td>Nicotine Strength</td>
+            <td>${eLiquid.nicotineStrength}</td>
         </tr>
         <tr>
             <td>Brands</td>
-            <td>${eCig.brands}</td>
+            <td>${eLiquid.brands}</td>
         </tr>
         <tr>
             <td>Price</td>
-            <td>${eCig.price}</td>
+            <td>${eLiquid.price}</td>
         </tr>
         <tr>
             <td>Product description</td>
-            <td>${eCig.productDescription}</td>
+            <td>${eLiquid.productDescription}</td>
         </tr>
         <tr>
             <td>Updated time</td>
-            <td>${eCig.updatedTime}</td>
+            <td>${eLiquid.updatedTime}</td>
         </tr>
         <tr>
-            <td><a href="delete/${eCig.id}">Delete</a></td>
-            <td><a href="${eCig.id}?edit=true">Edit</a></td>
+            <td><a href="delete/${eLiquid.id}">Delete</a></td>
+            <td><a href="${eLiquid.id}?edit=true">Edit</a></td>
         </tr>
     </table>
 </div>

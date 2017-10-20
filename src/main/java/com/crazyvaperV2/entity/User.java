@@ -2,13 +2,15 @@ package com.crazyvaperV2.entity;
 
 import javax.persistence.*;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -36,8 +38,14 @@ public class User {
     @OneToMany(mappedBy="user", targetEntity = Payment.class, fetch=FetchType.EAGER)
     private List<Payment> payments = new ArrayList<>();
 
-    @OneToMany(mappedBy="user", targetEntity = Role.class)
-    private List<Role> roles = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "role_id"))
+    private Collection<Role> roles;
 
     public User() {
     }
@@ -106,11 +114,11 @@ public class User {
         this.payments = payments;
     }
 
-    public List<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 }

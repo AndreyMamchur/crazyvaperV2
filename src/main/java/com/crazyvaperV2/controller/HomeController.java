@@ -12,4 +12,14 @@ public class HomeController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/loginAndRegistration")
+    public String loginPage() {
+        return "loginAndRegistration";
+    }
+
+    @GetMapping("/error_page")
+    public String errorPage() {
+        return "errorPage";
+    }
 }

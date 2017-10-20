@@ -4,6 +4,7 @@ import com.crazyvaperV2.dao.CartDao;
 import com.crazyvaperV2.entity.Cart;
 import com.crazyvaperV2.service.interfaces.CartServise;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +33,10 @@ public class CartServiceImpl implements CartServise {
     @Override
     public void delete(long id) {
         cartDao.delete(id);
+    }
+
+    @Override
+    public Page<Cart> getAll(Integer page, Integer size, String order, String direction) {
+        return null;
     }
 }

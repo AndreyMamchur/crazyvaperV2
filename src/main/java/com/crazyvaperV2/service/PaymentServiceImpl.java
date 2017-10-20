@@ -5,6 +5,7 @@ import com.crazyvaperV2.dao.PaymentDao;
 import com.crazyvaperV2.entity.Payment;
 import com.crazyvaperV2.service.interfaces.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +34,10 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public void delete(long id) {
         paymentDao.delete(id);
+    }
+
+    @Override
+    public Page<Payment> getAll(Integer page, Integer size, String order, String direction) {
+        return null;
     }
 }

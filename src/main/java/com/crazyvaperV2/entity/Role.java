@@ -1,46 +1,42 @@
 package com.crazyvaperV2.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "role_id", nullable = false)
+    private int id;
 
-    private String email;
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="email",referencedColumnName="email", insertable = false, updatable = false)
-    private User user;
-
-    @Column(name = "roleEnum")
-    @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum = RoleEnum.ROLE_USER;
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public RoleEnum getRoleEnum() {
-        return roleEnum;
+    public Collection<User> getUsers() {
+        return users;
     }
 
-    public void setRoleEnum(RoleEnum roleEnum) {
-        this.roleEnum = roleEnum;
+    public void setUsers(Collection<User> users) {
+        this.users = users;
     }
 }

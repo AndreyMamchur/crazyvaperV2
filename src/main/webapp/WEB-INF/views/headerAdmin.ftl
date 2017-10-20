@@ -13,7 +13,7 @@
         <div class="navbar-header">
         </div>
         <ul class="nav navbar-nav navbar-left">
-            <li class=""><a href="/">USERS</a></li>
+            <li class=""><a href="/user/all?page=0&size=10">USERS</a></li>
             <li class=""><a href="/">GOODS</a></li>
             <li class=""><a href="/">PAYMENTS</a></li>
             <li class=""><a href="/">CART</a></li>
