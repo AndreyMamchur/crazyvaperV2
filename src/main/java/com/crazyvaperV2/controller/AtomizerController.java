@@ -1,7 +1,7 @@
 package com.crazyvaperV2.controller;
 
-import com.crazyvaperV2.entity.ECig;
-import com.crazyvaperV2.service.interfaces.ECigService;
+import com.crazyvaperV2.entity.Atomizer;
+import com.crazyvaperV2.service.interfaces.AtomizerService;
 import com.crazyvaperV2.service.interfaces.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,25 +16,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/ecig")
-public class ECigController {
+@RequestMapping("/atomizer")
+public class AtomizerController {
 
     private static final Logger logger = Logger.getLogger(ECigController.class);
 
     @Autowired
-    private ECigService eCigService;
+    private AtomizerService atomizerService;
 
     @Autowired
     private ProductService productService;
 
     @GetMapping("/all")
-    public String showEcigs(Model model,
-                            @RequestParam(value = "page", required = false) Integer page,
-                            @RequestParam(value = "size", required = false) Integer size,
-                            @RequestParam(value = "order", required = false) String order,
-                            @RequestParam(value = "direction", required = false) String direction){
-        Page<ECig> pages;
-        List<ECig> all;
+    public String showAtomizer(Model model,
+                           @RequestParam(value = "page", required = false) Integer page,
+                           @RequestParam(value = "size", required = false) Integer size,
+                           @RequestParam(value = "order", required = false) String order,
+                           @RequestParam(value = "direction", required = false) String direction){
+        Page<Atomizer> pages;
+        List<Atomizer> all;
         int totalPages = 0;
         if (size == null){
             size = 10;
@@ -44,21 +44,21 @@ public class ECigController {
             direction = "low";
         }
         if (page != null) {
-            pages = eCigService.getAll(page, size, order, direction);
+            pages = atomizerService.getAll(page, size, order, direction);
             totalPages = pages.getTotalPages();
             model.addAttribute("total", totalPages);
             model.addAttribute("goodsList", pages.getContent());
             model.addAttribute("order", order);
             model.addAttribute("direction", direction);
         } else if ((!StringUtils.isEmpty(order)) && (!StringUtils.isEmpty(direction))) {
-            pages = eCigService.getAll(0, 10, order, direction);
+            pages = atomizerService.getAll(0, 10, order, direction);
             totalPages = pages.getTotalPages();
             model.addAttribute("total", totalPages);
             model.addAttribute("goodsList", pages.getContent());
             model.addAttribute("order", order);
             model.addAttribute("direction", direction);
         } else {
-            all = eCigService.getAll();
+            all = atomizerService.getAll();
             model.addAttribute("goodsList", all);
             totalPages = all.size()/size;
         }
@@ -71,7 +71,7 @@ public class ECigController {
             model.addAttribute("pages", pagesCount);
         }
 
-        return "ecigsList";
+        return "atomizerList";
     }
 
     @GetMapping("/create")
@@ -80,36 +80,36 @@ public class ECigController {
         if (message != null) {
             model.addAttribute("message", message);
         }
-        return "createECigsForm";
+        return "createAtomizerForm";
     }
 
     @PostMapping("/create")
-    public String createECig(@ModelAttribute ECig eCig) {
-        eCig.setUpdatedTime(new Date(System.currentTimeMillis()));
-        productService.save(eCig);
+    public String createAtomizer(@ModelAttribute Atomizer atomizer) {
+        atomizer.setUpdatedTime(new Date(System.currentTimeMillis()));
+        productService.save(atomizer);
         return "redirect:all";
     }
 
     @GetMapping("/{id}")
     public String getById(@PathVariable("id") long id,
                           @RequestParam(value = "edit", required = false) boolean edit, Model model) {
-        model.addAttribute("eCig", productService.getById(id));
+        model.addAttribute("atomizer", productService.getById(id));
         if (edit) {
-            return "editECig";
+            return "editAtomizer";
         }
-        return "showECig";
+        return "showAtomizer";
     }
 
     @PostMapping("/update")
-    public String editECigs(@ModelAttribute ECig eCig) {
-        eCig.setUpdatedTime(new Date(System.currentTimeMillis()));
-        productService.save(eCig);
-        return "redirect:" + eCig.getId() + "?edit=false";
+    public String editAtomizer(@ModelAttribute Atomizer atomizer) {
+        atomizer.setUpdatedTime(new Date(System.currentTimeMillis()));
+        productService.save(atomizer);
+        return "redirect:" + atomizer.getId() + "?edit=false";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteECigs(@PathVariable("id") long id) {
+    public String deleteAtomizer(@PathVariable("id") long id) {
         productService.delete(id);
-        return "redirect:/ecig/all";
+        return "redirect:/atomizer/all";
     }
 }

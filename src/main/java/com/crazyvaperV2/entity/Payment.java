@@ -80,5 +80,13 @@ public class Payment {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
+    public long getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(long cartId) {
+        this.cartId = cartId;
+    }
 }
 

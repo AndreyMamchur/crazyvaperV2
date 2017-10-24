@@ -18,34 +18,31 @@
 </@security.authorize>
 <#include "*/header.ftl">
 
-<h1>Users list</h1>
-<table class="table table-striped">
+<h1>Carts list</h1>
+<table class="table">
     <tr id="nameOfColumns">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Date of Birth</th>
-        <th>Phone Number</th>
-        <th>password</th>
-        <th>Buttons</th>
+        <th width="20%">Id</th>
+        <th width="80%">Goods</th>
     </tr>
-<#list users as user>
+<#list cartList as cart>
     <tr>
-        <td><a href="/user/${user.id}">${user.id}</a></td>
-        <td>${user.name}</td>
-        <td>${user.email}</td>
-        <td><#if user.dateOfBirth??>${user.dateOfBirth}<#else> </#if></td>
-        <td>${user.phoneNumber}</td>
-        <td>${user.password}</td>
-        <td><a href="delete/${user.id}">Delete</a>
-            <a href="${user.id}?edit=true">Edit</a>
+        <td width="20%"><a href="/cart/${cart.id}">${cart.id}</a>
+        <td width="80%">
+            <#list cart.productsList as goods>
+                <table class="table", border="0">
+                    <tr >
+                        <td style="border-width: 0px;border:none none;" width="50%">${goods.name}</td>
+                        <td style="border-width: 0px;border:none none;" width="50%">${goods.price}$</td>
+                    </tr>
+                </table>
+            </#list>
         </td>
     </tr>
 </#list>
 </table>
 
 <br>
-<a href="create">Create new</a>
+
 <br>
 </body>
 </html>

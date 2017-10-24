@@ -1,8 +1,8 @@
 package com.crazyvaperV2.controller;
 
-import com.crazyvaperV2.entity.User;
-import com.crazyvaperV2.service.interfaces.UserService;
-import org.apache.log4j.Logger;
+import com.crazyvaperV2.entity.Cart;
+import com.crazyvaperV2.entity.Product;
+import com.crazyvaperV2.service.interfaces.CartServise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -14,59 +14,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
-
-    private static final Logger logger = Logger.getLogger(UserController.class);
+@RequestMapping("/cart")
+public class CartController {
 
     @Autowired
-    private UserService userService;
+    private CartServise cartServise;
 
     @GetMapping("/{id}")
     public String getById(@PathVariable("id") long id,
                           @RequestParam(value = "edit", required = false) boolean edit, Model model) {
-        model.addAttribute("user", userService.getById(id));
+        model.addAttribute("cart", cartServise.getById(id));
         if (edit) {
-            return "editUser";
+            return "editCart";
         }
-        return "showUser";
-    }
-
-    @GetMapping("/create")
-    public String createPage(@RequestParam(value = "message", required = false) String message,
-                             Model model) {
-        if (message != null) {
-            model.addAttribute("message", message);
-        }
-        return "createUsersForm";
-    }
-
-    @PostMapping("/create")
-    public String createUser(@ModelAttribute User user, Model model) {
-        userService.save(user);
-        return "redirect:all";
-    }
-
-    @PostMapping("/update")
-    public String updateUser(@ModelAttribute User user) {
-        userService.save(user);
-        return "redirect:" + user.getId() + "?edit=false";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id) {
-        userService.delete(id);
-        return "redirect:/user/all";
+        return "showCart";
     }
 
     @GetMapping("/all")
-    public String showUsers(Model model,
+    public String showCart(Model model,
                             @RequestParam(value = "page", required = false) Integer page,
                             @RequestParam(value = "size", required = false) Integer size,
                             @RequestParam(value = "order", required = false) String order,
                             @RequestParam(value = "direction", required = false) String direction){
-        Page<User> pages;
-        List<User> all;
+        Page<Cart> pages;
+        List<Cart> all;
         int totalPages = 0;
         if (size == null){
             size = 10;
@@ -76,22 +47,22 @@ public class UserController {
             direction = "low";
         }
         if (page != null) {
-            pages = userService.getAll(page, size, order, direction);
+            pages = cartServise.getAll(page, size, order, direction);
             totalPages = pages.getTotalPages();
             model.addAttribute("total", totalPages);
-            model.addAttribute("users", pages.getContent());
+            model.addAttribute("cartList", pages.getContent());
             model.addAttribute("order", order);
             model.addAttribute("direction", direction);
         } else if ((!StringUtils.isEmpty(order)) && (!StringUtils.isEmpty(direction))) {
-            pages = userService.getAll(0, 10, order, direction);
+            pages = cartServise.getAll(0, 10, order, direction);
             totalPages = pages.getTotalPages();
             model.addAttribute("total", totalPages);
-            model.addAttribute("users", pages.getContent());
+            model.addAttribute("cartList", pages.getContent());
             model.addAttribute("order", order);
             model.addAttribute("direction", direction);
         } else {
-            all = userService.getAll();
-            model.addAttribute("users", all);
+            all = cartServise.getAll();
+            model.addAttribute("cartList", all);
             totalPages = all.size()/size;
         }
 
@@ -101,6 +72,21 @@ public class UserController {
         }
         model.addAttribute("pages", pagesCount);
 
-        return "usersList";
+        return "cartList";
+    }
+
+    @GetMapping("/create")
+    public String createPage(@RequestParam(value = "message", required = false) String message,
+                             Model model) {
+        if (message != null) {
+            model.addAttribute("message", message);
+        }
+        return "createCartForm";
+    }
+
+    @PostMapping("/create")
+    public String createCart(@ModelAttribute Cart cart) {
+        cartServise.save(cart);
+        return "redirect:showCart";
     }
 }

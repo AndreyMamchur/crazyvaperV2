@@ -38,7 +38,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy="user", targetEntity = Payment.class, fetch=FetchType.EAGER)
     private List<Payment> payments = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(

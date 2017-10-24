@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>E-CIGS</title>
+    <title>MODS</title>
     <link rel="stylesheet" href="/resources/css/style.css" type="text/css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
 </@security.authorize>
 <#include "*/header.ftl">
 
-<h1>E-CIGS</h1>
+<h1>MODS</h1>
 
 <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,14 +36,10 @@
 
 <#list goodsList as goods>
 <div id="goodsBlock">
-    <p><a href="/ecig/${goods.id}"><img width="100%" height="100%" src="/resources/image/${goods.image}"></a></p>
+    <p><a href="/mod/${goods.id}"><img width="100%" height="100%" src="/resources/image/${goods.image}"></a></p>
     <p>${goods.name}</p>
     <div style="display: inline">${goods.price}$  <div class="btn-group" roleEnum="group" aria-label="...">
         <button type="button" class="btn btn-default">Buy</button></div></div>
-        <#--<form action="/buyProduct" method="post" name="cart" class="form-group">-->
-            <#--<input type="submit" value="Buy"/>-->
-        <#--</form>-->
-        <#--<a href="/buyProduct?productId=${goods.id}">Buy</a></div></div>-->
 </div>
 </#list>
 <br>
@@ -52,9 +48,9 @@
     <#list pages as page>
         <#if order??>
             <#if direction??>
-                <span><a href="/ecig/all?page=${page}&order=${order}&direction=${direction}">${page} ;</a></span>
+                <span><a href="/mod/all?page=${page}&order=${order}&direction=${direction}">${page} ;</a></span>
             </#if>
-        </#if><#else><span><a href="/ecig/all?page=${page}">${page} ;</a></span>
+        </#if><#else><span><a href="/mod/all?page=${page}">${page} ;</a></span>
     </#list>
 </#if>
 <br>

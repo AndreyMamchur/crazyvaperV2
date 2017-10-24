@@ -20,6 +20,16 @@ public class Cart {
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
     private List<Product> productsList = new ArrayList<>();
 
+    private double total;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     public Cart() {
     }
 

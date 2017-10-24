@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ELiquidData</title>
+    <title>MODData</title>
     <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
 <body class="container">
@@ -11,37 +11,37 @@
 </@security.authorize>
 <#include "*/header.ftl">
 <div class="table-responsive">
-    <caption>ELIQUID INFO</caption><br>
-    <img width="40%" height="40%" src="/resources/image/${eLiquid.image}">
+    <caption>MOD info</caption><br>
+    <img width="40%" height="40%" src="/resources/image/${mod.image}">
     <table class="table table-striped">
 
         <tr>
             <td>Name</td>
-            <td>${eLiquid.name}</td>
+            <td>${mod.name}</td>
         </tr>
         <tr>
-            <td>Nicotine Strength</td>
-            <td>${eLiquid.nicotineStrength}</td>
+            <td>Color</td>
+            <td>${mod.color}</td>
         </tr>
         <tr>
             <td>Brands</td>
-            <td>${eLiquid.brands}</td>
+            <td>${mod.brands}</td>
         </tr>
         <tr>
             <td>Price</td>
-            <td>${eLiquid.price}</td>
+            <td>${mod.price}</td>
         </tr>
         <tr>
             <td>Product description</td>
-            <td>${eLiquid.productDescription}</td>
+            <td>${mod.productDescription}</td>
         </tr>
         <tr>
             <td>Updated time</td>
-            <td>${eLiquid.updatedTime}</td>
+            <td>${mod.updatedTime}</td>
         </tr>
         <tr>
-            <td><a href="delete/${eLiquid.id}">Delete</a></td>
-            <td><a href="${eLiquid.id}?edit=true">Edit</a></td>
+            <td><a href="delete/${mod.id}">Delete</a></td>
+            <td><a href="${mod.id}?edit=true">Edit</a></td>
         </tr>
     </table>
 </div>

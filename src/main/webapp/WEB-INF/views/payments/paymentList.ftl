@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserData</title>
+    <title>PaymentsData</title>
     <link rel="stylesheet" href="/resources/css/style.css" type="text/css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,34 +18,32 @@
 </@security.authorize>
 <#include "*/header.ftl">
 
-<h1>Users list</h1>
+<h1>Payments list</h1>
 <table class="table table-striped">
     <tr id="nameOfColumns">
         <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Date of Birth</th>
-        <th>Phone Number</th>
-        <th>password</th>
+        <th>Cart ID</th>
+        <th>User Name</th>
+        <th>Status</th>
+        <th>Total Price</th>
         <th>Buttons</th>
     </tr>
-<#list users as user>
+<#list payments as payment>
     <tr>
-        <td><a href="/user/${user.id}">${user.id}</a></td>
-        <td>${user.name}</td>
-        <td>${user.email}</td>
-        <td><#if user.dateOfBirth??>${user.dateOfBirth}<#else> </#if></td>
-        <td>${user.phoneNumber}</td>
-        <td>${user.password}</td>
-        <td><a href="delete/${user.id}">Delete</a>
-            <a href="${user.id}?edit=true">Edit</a>
+        <td><a href="/payment/${payment.id}">${payment.id}</a></td>
+        <td>${payment.cartId}</td>
+        <td>${payment.user.name}</td>
+        <td>${payment.status}</td>
+        <td>${payment.totalPrice}</td>
+        <td><a href="delete/${payment.id}">Delete</a>
+            <a href="${payment.id}?edit=true">Edit</a>
         </td>
     </tr>
 </#list>
 </table>
 
 <br>
-<a href="create">Create new</a>
+
 <br>
 </body>
 </html>

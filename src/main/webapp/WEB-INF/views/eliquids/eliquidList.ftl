@@ -10,10 +10,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 
 </head>
 <body class="container">
-<#include "*/headerAdmin.ftl">
+<@security.authorize access="hasAnyRole('ADMIN', 'SALESMANAGER')">
+    <#include "*/headerAdmin.ftl">
+</@security.authorize>
 <#include "*/header.ftl">
 
 <h1>E-LIQUIDS</h1>

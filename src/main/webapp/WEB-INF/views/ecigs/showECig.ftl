@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>ECIGData</title>
+    <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
 <body class="container">
-<#include "*/headerAdmin.ftl">
+<@security.authorize access="hasAnyRole('ADMIN', 'SALESMANAGER')">
+    <#include "*/headerAdmin.ftl">
+</@security.authorize>
 <#include "*/header.ftl">
 <div class="table-responsive">
     <caption>ECIG info</caption><br>
@@ -32,6 +35,7 @@
             <td>Product description</td>
             <td>${eCig.productDescription}</td>
         </tr>
+<@security.authorize access="hasAnyRole('ADMIN', 'SALESMANAGER')">
         <tr>
             <td>Updated time</td>
             <td>${eCig.updatedTime}</td>
@@ -40,6 +44,7 @@
             <td><a href="delete/${eCig.id}">Delete</a></td>
             <td><a href="${eCig.id}?edit=true">Edit</a></td>
         </tr>
+</@security.authorize>
     </table>
 </div>
 <a type="button" href="all" class="button">Back</a>

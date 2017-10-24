@@ -27,7 +27,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer(){
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPaths("/", "/WEB-INF/views/", "/WEB-INF/views/ecigs/", "/WEB-INF/views/atomizers/", "/WEB-INF/views/carts/",
+        freeMarkerConfigurer.setTemplateLoaderPaths("/", "/WEB-INF/views/", "/WEB-INF/views/ecigs/", "/WEB-INF/views/atomizers/", "/WEB-INF/views/cart/",
                 "/WEB-INF/views/eliquids/", "/WEB-INF/views/mods/", "/WEB-INF/views/payments/", "/WEB-INF/views/users/");
         return freeMarkerConfigurer;
     }

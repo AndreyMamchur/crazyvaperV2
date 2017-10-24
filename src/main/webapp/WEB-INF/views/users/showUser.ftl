@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>UserData</title>
+    <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
 <body class="container">
-<#include "*/headerAdmin.ftl">
+<@security.authorize access="hasAnyRole('ADMIN', 'SALESMANAGER')">
+    <#include "*/headerAdmin.ftl">
+</@security.authorize>
 <#include "*/header.ftl">
 <div class="table-responsive">
     <caption>User info</caption>
@@ -33,9 +36,13 @@
             <td>Password</td>
             <td>${user.password}</td>
         </tr>
+        <tr>
+            <td><a href="delete/${user.id}">Delete</a></td>
+            <td><a href="${user.id}?edit=true">Edit</a></td>
+        </tr>
     </table>
 </div>
 
-<a type="button" href="all" class="button">Back</a>
+<a type="button" href="/user/all?page=0&size=10" class="button">Back</a>
 </body>
 </html>

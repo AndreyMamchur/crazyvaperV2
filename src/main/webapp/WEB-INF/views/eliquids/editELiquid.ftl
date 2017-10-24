@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>ECIGData</title>
+    <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
 <body class="container">
-<#include "*/headerAdmin.ftl">
+<@security.authorize access="hasAnyRole('ADMIN', 'SALESMANAGER')">
+    <#include "*/headerAdmin.ftl">
+</@security.authorize>
 <#include "*/header.ftl">
 
 <form action="update" method="post" name="eLiquid" class="form-group">

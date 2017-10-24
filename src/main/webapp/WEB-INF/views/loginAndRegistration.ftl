@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
-<body>
-<#include "headerAdmin.ftl">
+<body class="container">
+<@security.authorize access="hasAnyRole('ADMIN', 'SALESMANAGER')">
+    <#include "*/headerAdmin.ftl">
+</@security.authorize>
 <#include "header.ftl">
 <table class="table" id="loginAndRegistration">
     <tr>

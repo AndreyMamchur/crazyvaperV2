@@ -26,10 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/", "/resources/**", "/atomizer/**", "/ecig/**"
+                        , "/eliquid/**", "/mod/**", "/buyProduct", "/cart/**").permitAll()
+                .antMatchers().access("hasRole('USER') and hasRole('ADMIN')")
+                .antMatchers("/**").access("hasRole('ADMIN')")
                 .and().formLogin()
                 .loginPage("/loginAndRegistration").permitAll()
-                .usernameParameter("name")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .and().exceptionHandling().accessDeniedPage("/error_page");
     }

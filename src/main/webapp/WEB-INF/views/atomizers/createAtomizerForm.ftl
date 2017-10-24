@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ELiquidsData</title>
+    <title>ATOMIZERData</title>
+
     <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
 <body class="container">
@@ -19,11 +20,11 @@ EROOR:
 </#if>
 
 
-<form action="create" method="post" name="eCig" class="form-group">
+<form action="create" method="post" name="atomizer" class="form-group">
     Name
     <input title="Name" type="text" name="name" required/>
-    Nicotine Strength
-    <input title="Nicotine Strength" type="text" name="nicotineStrength" required/>
+    Color
+    <input title="Color" type="text" name="color" required/>
     Brands
     <input title="Brand" type="text" name="brands" required/>
     Price
@@ -34,6 +35,6 @@ EROOR:
     <input title="Image" type="text" name="image" required/>
     <input type="submit" value="Create"/>
 </form>
-<a type="button" href="/ecig/all" class="button">Back</a>
+<a type="button" href="/atomizer/all" class="button">Back</a>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -83,6 +84,20 @@ public class ProductServiceImpl implements ProductService {
             page1 = productDao.findAll(pageable);
         } catch (Exception e){
             logger.error("Something wrong with getAll(Integer page, Integer size, String order, String direction)", e);
+            page1 = null;
+        }
+        return page1;
+    }
+
+    @Override
+    public Page<Product> getAll(Integer page, Integer size) {
+        Page<Product> page1;
+        Pageable pageable = null;
+        try {
+                pageable = new PageRequest(page, size);
+                page1 = productDao.findAll(pageable);
+        } catch (Exception e){
+            logger.error("Something wrong with getAll(Integer page, Integer size)", e);
             page1 = null;
         }
         return page1;
